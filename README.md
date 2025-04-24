@@ -1,21 +1,45 @@
-# Project 3: Spots
+# Sprint 3 Project: Spots
 
-### Overview  
+## Description
 
-* Intro  
-* Figma  
-* Images  
-  
+Spots is a responsive interactive social media web application where users can add and remove photos and make minor adjustments to their profile. By following a Figma design, using modern HTML and CSS styles, the project delivers clean, responsive layout that looks good on all screen sizes and is easy to use.
+
+### Overview
+
+- Intro
+- Figma
+- Images
+
 **Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+
+The Spots project starts with a header that contains the logo and the name of the project. Then it features two main sections: a Profile Section and a Cards Section. The design follows the specifications outlined in Figma, and the layout is fully responsive, ensuring a smooth user experience across various devices. The footer is simple, aligned with the Figma design to provide copyright information.
+
+**Figma**
+
+- [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+
+**Images**
+
+This project uses images exported directly from the [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1).
+
+_Example_
+
+- [Profile avatar](images/spots-avatar-and-card-images/Avatar.png)
+
+## Project Features
+
+- Built with HTML and CSS (Flexbox + Grid).
+
+- Image cards with title, like, button, and interactive styling.
+
+- Fully responsive layout with different screen sizes.
+
+## 👩‍💻 Author
+
+Designed and implemented by _Mona Abdelreheem_.
+
+## Deployment
+
+The project is deployed to GitHub Pages
+
+- [Deployment link] ()
