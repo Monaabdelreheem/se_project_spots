@@ -13,7 +13,7 @@
   height: 413px;
   object-fit: cover;
   display: block;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 .card__title {
   margin: 0;
@@ -30,6 +30,9 @@
 }
 .card__like-btn {
   background-image: url(../images/union.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 23px;
   height: 20px;
   border: none;
@@ -37,6 +40,9 @@
   opacity: 40%;
   cursor: pointer;
   transition: opacity 0.3s ease;
+}
+.card__like-btn:hover {
+  opacity: 100%;
 }
 @media screen and (max-width: 627px) {
   .card__content {
@@ -48,5 +54,10 @@
   .card__title {
     font-size: 16px;
     line-height: 1;
+    max-width: 250px;
+  }
+  .card__like-btn {
+    width: 20px;
+    height: 18px;
   }
 }

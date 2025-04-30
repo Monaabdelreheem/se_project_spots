@@ -7,9 +7,10 @@
 }
 .profile__avatar {
   margin-right: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   height: 190px;
   width: 190px;
+  object-fit: cover;
 }
 .profile__column {
   display: flex;
@@ -66,7 +67,7 @@
   opacity: 100%;
 }
 .profile__add-btn {
-  margin: 138px 0 20px auto;
+  margin: auto 0 0 auto;
   padding: 0;
   display: flex;
   align-items: center;
@@ -84,6 +85,9 @@
   background-color: rgba(33, 33, 33, 1);
   color: rgba(252, 245, 229, 1);
   gap: 8px;
+}
+.profile__add-btn:hover {
+  opacity: 70%;
 }
 
 @media screen and (max-width: 627px) {

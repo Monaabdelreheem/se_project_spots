@@ -42,4 +42,4 @@ Designed and implemented by _Mona Abdelreheem_.
 
 The project is deployed to GitHub Pages
 
-- ([Deployment link](https://github.com/Monamoon311/se_project_spots/deployments/github-pages))
+- ([Deployment link](https://monamoon311.github.io/se_project_spots/))
