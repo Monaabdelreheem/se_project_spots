@@ -38,11 +38,11 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
-  cursor: pointer;
   transition: opacity 0.3s ease;
 }
 .card__like-btn:hover {
   opacity: 100%;
+  cursor: pointer;
 }
 @media screen and (max-width: 627px) {
   .card__content {
