@@ -43,3 +43,7 @@ Designed and implemented by _Mona Abdelreheem_.
 The project is deployed to GitHub Pages
 
 - ([Deployment link](https://monamoon311.github.io/se_project_spots/))
+
+## 📽️ Demo Video
+
+[Watch Demo Video on Google Drive](https://drive.google.com/file/d/1deuJwcA2tMGPBookqiP0DSiG4IKBjtq4/view?usp=sharing)
