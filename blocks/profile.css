@@ -25,11 +25,6 @@
   font-size: 32px;
   line-height: 1;
   letter-spacing: 0;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 .profile__description {
   margin: 0;
@@ -39,11 +34,6 @@
   line-height: 1;
   letter-spacing: 0;
   max-width: 420px;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 .profile__edit-btn {
   margin-top: auto;
