@@ -8,17 +8,6 @@ const editProfileNameInput = editProfileModal.querySelector(
 const editProfiledescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
-
-editProfileBtn.addEventListener("click", function () {
-  editProfileNameInput.value = profileNameEl.textContent;
-  editProfiledescriptionInput.value = profileDescription.textContent;
-  editProfileModal.classList.add("modal_is-opened");
-});
-
-editProfileCloseBtn.addEventListener("click", function () {
-  editProfileModal.classList.remove("modal_is-opened");
-});
-
 const addProfileBtn = document.querySelector(".profile__add-btn");
 const addProfileModal = document.querySelector("#new-post-modal");
 const addProfileCloseBtn = addProfileModal.querySelector(".modal__close-btn");
@@ -30,27 +19,45 @@ const addProfileCaptionInput = addProfileModal.querySelector("#caption-input");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
-addProfileBtn.addEventListener("click", function () {
-  addProfileModal.classList.add("modal_is-opened");
-});
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+}
 
-addProfileCloseBtn.addEventListener("click", function () {
-  addProfileModal.classList.remove("modal_is-opened");
-});
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+}
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescription.textContent = editProfiledescriptionInput.value;
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 }
 
 function handleAddProfileSubmit(evt) {
   evt.preventDefault();
   console.log("Image URL:", addProfileCardImageInput.value);
   console.log("Caption:", addProfileCaptionInput.value);
-  addProfileModal.classList.remove("modal_is-opened");
+  closeModal(addProfileModal);
 }
+
+editProfileBtn.addEventListener("click", function () {
+  editProfileNameInput.value = profileNameEl.textContent;
+  editProfiledescriptionInput.value = profileDescription.textContent;
+  openModal(editProfileModal);
+});
+
+editProfileCloseBtn.addEventListener("click", function () {
+  closeModal(editProfileModal);
+});
+
+addProfileBtn.addEventListener("click", function () {
+  openModal(addProfileModal);
+});
+
+addProfileCloseBtn.addEventListener("click", function () {
+  closeModal(addProfileModal);
+});
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 addProfileForm.addEventListener("submit", handleAddProfileSubmit);
