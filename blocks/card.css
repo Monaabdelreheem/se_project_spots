@@ -25,7 +25,7 @@
   right: 10px;
   border: none;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
 }
 .card__delete-btn:hover {
   background-image: url(../images/State=Hover-delete.svg);
@@ -65,6 +65,7 @@
 }
 .card__like-btn_active:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 @media screen and (max-width: 627px) {
   .card__content {
