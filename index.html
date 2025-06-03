@@ -18,11 +18,11 @@
   </head>
   <body>
     <div class="page">
-      <header class="header">
+      <header class="header" aria-label="Site header with logo">
         <img src="./images/logo.svg" alt="Spots logo" class="header__logo" />
       </header>
       <main class="content">
-        <section class="profile page__section">
+        <section class="profile page__section" aria-label="User profile section">
           <img
             src="./images/spots-avatar-and-card-images/Avatar.png"
             alt="Bessie Coleman Avatar"
@@ -31,37 +31,37 @@
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
-            <button type="button" class="profile__edit-btn">
+            <button type="button" class="profile__edit-btn" aria-label="Edit profile">
               <img src="./images/pencil.svg" alt="Pencil icon" />Edit Profile
             </button>
           </div>
-          <button type="button" class="profile__add-btn">
+          <button type="button" class="profile__add-btn" aria-label="Add new post">
             <img src="./images/Plus-icon.svg" alt="Plus icon" />New Post
           </button>
         </section>
-        <section class="cards page__section">
-          <ul class="cards__list">
+        <section class="cards page__section" aria-label="Photo cards section">
+          <ul class="cards__list" aria-label="List of photo cards">
             <template id="card-template">
-              <li class="card">
-                <button type="button" class="card__delete-btn"></button>
+              <li class="card" aria-label="Photo card">
+                <button type="button" class="card__delete-btn" aria-label="Delete card"></button>
                 <img src="#" alt="" class="card__image" />
                 <div class="card__content">
                   <h2 class="card__title"></h2>
-                  <button type="button" class="card__like-btn"></button>
+                  <button type="button" class="card__like-btn" aria-label="Like card"></button>
                 </div>
               </li>
             </template>
           </ul>
         </section>
       </main>
-      <footer class="footer">
+      <footer class="footer" aria-label="Page footer">
         <p class="footer__content">2025 &copy; Spots</p>
       </footer>
-      <div class="modal" id="edit-profile-modal">
+      <div class="modal" id="edit-profile-modal" aria-label="Edit profile modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
+          <button type="button" class="modal__close-btn" aria-label="Close edit profile modal"></button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form">
+          <form class="modal__form" aria-label="Edit profile form">
             <label class="modal__label">
               Name
               <input
@@ -86,11 +86,11 @@
           </form>
         </div>
       </div>
-      <div class="modal" id="new-post-modal">
+      <div class="modal" id="new-post-modal" aria-label="New post modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
+          <button type="button" class="modal__close-btn" aria-label="Close new post modal"></button>
           <h2 class="modal__title">New post</h2>
-          <form class="modal__form">
+          <form class="modal__form" aria-label="New post form">
             <label class="modal__label">
               Image link
               <input
@@ -117,11 +117,12 @@
       </div>
     </div>
 
-    <div class="modal modal__preview" id="preview-modal">
+    <div class="modal modal__preview" id="preview-modal" aria-label="Image preview modal">
       <div class="modal__image-container">
         <button
           type="button"
           class="modal__close-btn modal__close-btn_preview"
+          aria-label="Close preview modal"
         ></button>
         <img src="#" alt="" class="modal__image" />
         <p class="modal__caption"></p>
