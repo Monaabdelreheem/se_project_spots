@@ -59,16 +59,16 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
+previewModalCloseBtn.addEventListener("click", function () {
+  closeModal(previewModal);
+});
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
-
-  previewModalCloseBtn.addEventListener("click", function () {
-    closeModal(previewModal);
-  });
 
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
@@ -120,6 +120,9 @@ function handleAddProfileSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   closeModal(addProfileModal);
+
+  addProfileCaptionInput.value = "";
+  addProfileCardImageInput.value = "";
 }
 
 editProfileBtn.addEventListener("click", function () {

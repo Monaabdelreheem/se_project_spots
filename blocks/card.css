@@ -16,6 +16,9 @@
   display: block;
   border-radius: 8px;
 }
+.card__image:hover {
+  cursor: pointer;
+}
 .card__delete-btn {
   background-image: url(../images/Delete\ Icon.svg);
   width: 32px;
@@ -29,6 +32,7 @@
 }
 .card__delete-btn:hover {
   background-image: url(../images/State=Hover-delete.svg);
+  cursor: pointer;
 }
 .card__title {
   margin: 0;
