@@ -22,7 +22,10 @@
         <img src="./images/logo.svg" alt="Spots logo" class="header__logo" />
       </header>
       <main class="content">
-        <section class="profile page__section" aria-label="User profile section">
+        <section
+          class="profile page__section"
+          aria-label="User profile section"
+        >
           <img
             src="./images/spots-avatar-and-card-images/Avatar.png"
             alt="Bessie Coleman Avatar"
@@ -31,11 +34,19 @@
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
-            <button type="button" class="profile__edit-btn" aria-label="Edit profile">
+            <button
+              type="button"
+              class="profile__edit-btn"
+              aria-label="Edit profile"
+            >
               <img src="./images/pencil.svg" alt="Pencil icon" />Edit Profile
             </button>
           </div>
-          <button type="button" class="profile__add-btn" aria-label="Add new post">
+          <button
+            type="button"
+            class="profile__add-btn"
+            aria-label="Add new post"
+          >
             <img src="./images/Plus-icon.svg" alt="Plus icon" />New Post
           </button>
         </section>
@@ -43,11 +54,19 @@
           <ul class="cards__list" aria-label="List of photo cards">
             <template id="card-template">
               <li class="card" aria-label="Photo card">
-                <button type="button" class="card__delete-btn" aria-label="Delete card"></button>
+                <button
+                  type="button"
+                  class="card__delete-btn"
+                  aria-label="Delete card"
+                ></button>
                 <img src="#" alt="" class="card__image" />
                 <div class="card__content">
                   <h2 class="card__title"></h2>
-                  <button type="button" class="card__like-btn" aria-label="Like card"></button>
+                  <button
+                    type="button"
+                    class="card__like-btn"
+                    aria-label="Like card"
+                  ></button>
                 </div>
               </li>
             </template>
@@ -57,36 +76,44 @@
       <footer class="footer" aria-label="Page footer">
         <p class="footer__content">2025 &copy; Spots</p>
       </footer>
-      <div class="modal" id="edit-profile-modal" aria-label="Edit profile modal">
+      <div
+        class="modal"
+        id="edit-profile-modal"
+        aria-label="Edit profile modal"
+      >
         <div class="modal__container">
-          <button type="button" class="modal__close-btn" aria-label="Close edit profile modal"></button>
+          <button
+            type="button"
+            class="modal__close-btn"
+            aria-label="Close edit profile modal"
+          ></button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form" aria-label="Edit profile form">
+          <form class="modal__form" aria-label="Edit profile form" novalidate>
             <label class="modal__label">
               Name
               <input
                 id="profile-name-input"
                 type="text"
-                class="modal__input"
+                class="modal__input modal__input_type_error"
                 placeholder="Type your name"
                 minlength="2"
                 maxlength="40"
                 required
               />
-              <span class="modal__error"></span>
+              <span id="profile-name-input-error" class="modal__error"></span>
             </label>
             <label class="modal__label">
               Description
               <input
                 id="profile-description-input"
                 type="text"
-                class="modal__input"
+                class="modal__input modal__input_type_error"
                 placeholder="Describe yourself"
                 minlength="2"
                 maxlength="200"
                 required
               />
-              <span class="modal__error"></span>
+              <span id="profile-description-input-error" class="modal__error"></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -94,32 +121,36 @@
       </div>
       <div class="modal" id="new-post-modal" aria-label="New post modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn" aria-label="Close new post modal"></button>
+          <button
+            type="button"
+            class="modal__close-btn"
+            aria-label="Close new post modal"
+          ></button>
           <h2 class="modal__title">New post</h2>
-          <form class="modal__form" aria-label="New post form">
+          <form class="modal__form" aria-label="New post form" novalidate>
             <label class="modal__label">
               Image link
               <input
                 id="card-image-input"
                 type="url"
-                class="modal__input"
+                class="modal__input modal__input_type_error"
                 placeholder="Paste a link to the picture"
                 required
               />
-              <span class="modal__error"></span>
+              <span id="card-image-input-error" class="modal__error"></span>
             </label>
             <label class="modal__label">
               Caption
               <input
                 id="caption-input"
                 type="text"
-                class="modal__input"
+                class="modal__input modal__input_type_error"
                 placeholder="Type your caption"
                 minlength="2"
                 maxlength="30"
                 required
               />
-              <span class="modal__error"></span>
+              <span id="caption-input-error" class="modal__error"></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -127,7 +158,11 @@
       </div>
     </div>
 
-    <div class="modal modal__preview" id="preview-modal" aria-label="Image preview modal">
+    <div
+      class="modal modal__preview"
+      id="preview-modal"
+      aria-label="Image preview modal"
+    >
       <div class="modal__image-container">
         <button
           type="button"
@@ -138,6 +173,7 @@
         <p class="modal__caption"></p>
       </div>
     </div>
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
