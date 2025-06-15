@@ -57,12 +57,6 @@ const previewModalCloseBtn = previewModal.querySelector(
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
-const closeButtons = document.querySelectorAll(".modal__close-btn");
-closeButtons.forEach((button) => {
-  const modal = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(modal));
-});
-
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
@@ -160,8 +154,11 @@ initialCards.forEach(function (item) {
 
 
 modals.forEach((modal) => {
-  modal.addEventListener("mousedown", function (evt) {
-    if (evt.target.classList.contains("modal")) {
+  modal.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target.classList.contains("modal") || 
+      evt.target.classList.contains("modal__close-btn") 
+    ) {
       closeModal(modal);
     }
   });
@@ -175,4 +172,3 @@ function handleEscClose(evt) {
     }
   }
 }
-
