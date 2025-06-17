@@ -42,7 +42,7 @@ Designed and implemented by _Mona Abdelreheem_.
 
 The project is deployed to GitHub Pages
 
-- ([Deployment link](https://github.com/Monaabdelreheem/se_project_spots))
+- ([Deployment link](https://monaabdelreheem.github.io/se_project_spots/))
 
 ## 📽️ Demo Video
 
