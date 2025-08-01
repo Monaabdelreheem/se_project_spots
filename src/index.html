@@ -12,7 +12,7 @@
       name="keywords"
       content="social media, application, profile, user, photos"
     />
-    <link rel="stylesheet" href="./pages/index.css" />
+
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>SPOTS</title>
   </head>
@@ -39,7 +39,7 @@
               class="profile__edit-btn"
               aria-label="Edit profile"
             >
-              <img src="./images/pencil.svg" alt="Pencil icon" />Edit Profile
+              <img class="pencil-icon" src="./images/pencil.svg" alt="Pencil icon" />Edit Profile
             </button>
           </div>
           <button
@@ -47,7 +47,7 @@
             class="profile__add-btn"
             aria-label="Add new post"
           >
-            <img src="./images/Plus-icon.svg" alt="Plus icon" />New Post
+            <img class="plus-icon" src="./images/plus-icon.svg" alt="Plus icon" />New Post
           </button>
         </section>
         <section class="cards page__section" aria-label="Photo cards section">
@@ -113,7 +113,10 @@
                 maxlength="200"
                 required
               />
-              <span id="profile-description-input-error" class="modal__error"></span>
+              <span
+                id="profile-description-input-error"
+                class="modal__error"
+              ></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -173,7 +176,5 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script src="./scripts/validation.js"></script>
-    <script src="./scripts/index.js"></script>
   </body>
 </html>

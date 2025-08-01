@@ -1,3 +1,10 @@
+import "./index.css";
+import { enableValidation, settings, resetValidation, disableButton } from "../scripts/validation.js"; 
+import logo from "../images/logo.svg";
+import avatarImage from "../images/spots-avatar-and-card-images/Avatar.png";
+import plusIcon from "../images/plus-icon.svg";
+import pencilIcon from "../images/pencil.svg";
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -28,6 +35,27 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
+
+const logoEl = document.querySelector('.header__logo');
+logoEl.src = logo;
+
+const avatarEl = document.querySelector('.profile__avatar');
+avatarEl.src = avatarImage;
+
+const plusIconEl = document.querySelector('.plus-icon');
+plusIconEl.src = plusIcon;
+
+const pencilEl = document.querySelector('.pencil-icon');
+pencilEl.src = pencilIcon;
+
+
+
+// const plusImg = document.createElement('img');
+// plusImg.src = plusIcon;
+// plusImg.alt = "Add new card";
+// document.body.appendChild(plusImg);
+
+
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -172,3 +200,4 @@ function handleEscClose(evt) {
     }
   }
 }
+enableValidation(settings);
