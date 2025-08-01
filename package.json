@@ -2,17 +2,16 @@
   "name": "se_project_spots",
   "version": "1.0.0",
   "description": "\"Responsive social media web app with interactive photo cards, built using HTML, CSS, JS, and Webpack.\"",
-  "homepage": "https://github.com/Monamoon311/se_project_spots#readme",
+  "homepage": "https://monaabdelreheem.github.io/se_project_spots",
   "bugs": {
-    "url": "https://github.com/Monamoon311/se_project_spots/issues"
+    "url": "https://github.com/Monaabdelreheem/se_project_spots/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Monamoon311/se_project_spots.git"
+    "url": "git+https://github.com/Monaabdelreheem/se_project_spots.git"
   },
   "license": "ISC",
   "author": "Mona Abdelreheem",
-  
   "main": "index.js",
   "devDependencies": {
     "@babel/core": "7.18.9",
