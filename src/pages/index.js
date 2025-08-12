@@ -41,44 +41,13 @@ import Api from "../utils/Api.js";
 //     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
 //   },
 // ];
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "38712cdd-b471-4c1d-89fb-357ab7c34c12",
-    "Content-Type": "application/json",
-  },
-});
-
-api
-  .getInitialCards()
-  .then((cards) => {
-    cards.forEach((item) => {
-      const cardElement = getCardElement(item);
-      cardsList.append(cardElement);
-    });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
 const logoEl = document.querySelector(".header__logo");
-logoEl.src = logo;
-
-const avatarEl = document.querySelector(".profile__avatar");
-avatarEl.src = avatarImage;
-
 const plusIconEl = document.querySelector(".plus-icon");
-plusIconEl.src = plusIcon;
-
 const pencilEl = document.querySelector(".pencil-icon");
+const profileAvatarEl = document.querySelector(".profile__avatar");
+logoEl.src = logo;
+plusIconEl.src = plusIcon;
 pencilEl.src = pencilIcon;
-
-// const plusImg = document.createElement('img');
-// plusImg.src = plusIcon;
-// plusImg.alt = "Add new card";
-// document.body.appendChild(plusImg);
-
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -97,21 +66,29 @@ const addProfileForm = addProfileModal.querySelector(".modal__form");
 const addProfileCardImageInput =
   addProfileModal.querySelector("#card-image-input");
 const addProfileCaptionInput = addProfileModal.querySelector("#caption-input");
-
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-
 const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseBtn = previewModal.querySelector(
   ".modal__close-btn_preview"
 );
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
-
 const modals = document.querySelectorAll(".modal");
+
+logoEl.src = logo;
+plusIconEl.src = plusIcon;
+pencilEl.src = pencilIcon;
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "38712cdd-b471-4c1d-89fb-357ab7c34c12",
+    "Content-Type": "application/json",
+  },
+});
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -144,6 +121,22 @@ function getCardElement(data) {
   return cardElement;
 }
 
+api
+  .getAppInfo()
+  .then(([userData, cards]) => {
+    profileNameEl.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+    profileAvatarEl.src = userData.avatar;
+
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
   document.addEventListener("keydown", handleEscClose);
@@ -156,9 +149,22 @@ function closeModal(modal) {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescription.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
+  api
+    .editUserInfo({
+      name: editProfileNameInput.value,
+      about: editProfileDescriptionInput.value,
+    })
+    .then((userData) => {
+      profileNameEl.textContent = userData.name;
+      profileDescription.textContent = userData.about;
+      profileAvatarEl.src = userData.avatar;
+      closeModal(editProfileModal);
+    })
+    .catch((err) => {
+      console.error("Failed to update profile:", err);
+    });
+  // profileNameEl.textContent = editProfileNameInput.value;
+  // profileDescription.textContent = editProfileDescriptionInput.value;
 }
 
 function handleAddProfileSubmit(evt) {
