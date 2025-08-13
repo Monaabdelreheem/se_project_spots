@@ -26,10 +26,16 @@
           class="profile page__section"
           aria-label="User profile section"
         >
-          <img
-            alt="Bessie Coleman Avatar"
-            class="profile__avatar"
-          />
+        <div class="profile__avatar-container">
+          <button class="profile__avatar-btn">
+            <img
+        src=""
+              alt=""
+              class="profile__pencil-icon"
+            />
+          </button>
+          <img alt="Bessie Coleman Avatar" class="profile__avatar" />
+          </div>
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -175,5 +181,35 @@
         <p class="modal__caption"></p>
       </div>
     </div>
+
+    <div
+        class="modal"
+        id="avatar-profile-modal"
+        aria-label="Avatar profile modal"
+      >
+        <div class="modal__container">
+          <button
+            type="button"
+            class="modal__close-btn"
+            aria-label="Close avatar profile modal"
+          ></button>
+          <h3 class="modal__title">Edit profile avatar</h3>
+          <form class="modal__form" id="edit-avatar-form" aria-label="Edit avatar" novalidate>
+            <label class="modal__label" for="profile-avatar-input">
+              Profile Picture
+              <input
+                id="profile-avatar-input"
+                name="avatar"
+                type="url"
+                class="modal__input"
+                placeholder="Paste the link to an image"
+                required
+              />
+              <span id="profile-avatar-input-error" class="modal__error"></span>
+            </label>
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
+        </div>
+      </div>
   </body>
 </html>

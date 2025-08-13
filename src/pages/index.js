@@ -9,6 +9,7 @@ import logo from "../images/logo.svg";
 import avatarImage from "../images/spots-avatar-and-card-images/Avatar.png";
 import plusIcon from "../images/plus-icon.svg";
 import pencilIcon from "../images/pencil.svg";
+import pencilAvatar from "../images/spots-avatar-and-card-images/pencil-avatar.png";
 import Api from "../utils/Api.js";
 
 // const initialCards = [
@@ -48,6 +49,8 @@ const profileAvatarEl = document.querySelector(".profile__avatar");
 logoEl.src = logo;
 plusIconEl.src = plusIcon;
 pencilEl.src = pencilIcon;
+const pencilIconImg = document.querySelector(".profile__pencil-icon");
+pencilIconImg.src = pencilAvatar;
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -61,6 +64,7 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
 const addProfileBtn = document.querySelector(".profile__add-btn");
 const addProfileModal = document.querySelector("#new-post-modal");
 const addProfileCloseBtn = addProfileModal.querySelector(".modal__close-btn");
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
 const cardSubmitBtn = addProfileModal.querySelector(".modal__submit-btn");
 const addProfileForm = addProfileModal.querySelector(".modal__form");
 const addProfileCardImageInput =
@@ -81,6 +85,15 @@ const modals = document.querySelectorAll(".modal");
 logoEl.src = logo;
 plusIconEl.src = plusIcon;
 pencilEl.src = pencilIcon;
+
+// Avatar form element 
+const avatarModal = document.querySelector("#avatar-profile-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
+const avatarCloseBtn = avatarModal.querySelector(".modal__close-btn");
+const avatarInputError = avatarModal.querySelector("#profile-avatar-input-error");
+
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -184,6 +197,23 @@ function handleAddProfileSubmit(evt) {
   closeModal(addProfileModal);
 }
 
+// Avatar submission handler 
+function handleAvatarSubmit(evt) {
+  evt.preventDefault(); 
+  api
+    .editAvatarInfo({
+      avatar: avatarInput.value,
+    })
+    .then((userData) => {
+      profileAvatarEl.src = userData.avatar;
+      avatarForm.reset();
+      closeModal(avatarModal);
+    })
+    .catch((err) => {
+      console.error("Failed to update avatar:", err);
+    });
+}
+
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescription.textContent;
@@ -197,6 +227,22 @@ addProfileBtn.addEventListener("click", function () {
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 addProfileForm.addEventListener("submit", handleAddProfileSubmit);
+
+avatarModalBtn.addEventListener("click", () => {
+  resetValidation(avatarForm, settings);
+  openModal(avatarModal);
+});
+
+avatarCloseBtn.addEventListener("click", () => {
+  closeModal(avatarModal);
+});
+
+avatarForm.addEventListener("submit", (evt) => {
+  evt.preventDefault(); 
+
+});
+
+avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
