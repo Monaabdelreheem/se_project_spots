@@ -11,6 +11,8 @@ import plusIcon from "../images/plus-icon.svg";
 import pencilIcon from "../images/pencil.svg";
 import pencilAvatar from "../images/spots-avatar-and-card-images/pencil-avatar.png";
 import Api from "../utils/Api.js";
+// import { set } from "core-js/core/dict";
+import { setButtonText } from "../utils/helpers.js";
 
 // const initialCards = [
 //   {
@@ -188,11 +190,8 @@ function closeModal(modal) {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  // simple loading state
-  const prevText = editProfileSubmitBtn.textContent;
-  const submitBtn = editProfileForm.querySelector(".modal__submit-btn");
-  editProfileSubmitBtn.textContent = "Saving…";
-  editProfileSubmitBtn.disabled = true;
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
   api
     .editUserInfo({
       name: editProfileNameInput.value,
@@ -207,27 +206,25 @@ function handleEditProfileSubmit(evt) {
     .catch((err) => {
       console.error("Failed to update profile:", err);
     })
-  //   // .finally(() => {
-  //   //   editProfileSubmitBtn.textContent = prevText;
-  //   //   editProfileSubmitBtn.disabled = false;
-  //   //   editProfileForm.reset();
-  //   //   disableButton(editProfileSubmitBtn, settings); // keep submit disabled until valid again
-  //   });
-  // // profileNameEl.textContent = editProfileNameInput.value;
-  // // profileDescription.textContent = editProfileDescriptionInput.value;
+    .finally(() => {
+      setButtonText(submitBtn, false);
+      editProfileForm.reset();
+      resetValidation(editProfileForm, settings); // reset validation state
+      
+    });
+  
 }
 
 // Function to handle adding a new card
 function handleAddProfileSubmit(evt) {
   evt.preventDefault();
-  const name = addProfileCaptionInput.value.trim();
-  const link = addProfileCardImageInput.value.trim();
+  const name = addProfileCaptionInput.value;
+  const link = addProfileCardImageInput.value;
   if (!name || !link) return; // guard; your validator should block anyway
 
   // simple loading state
-  const prevText = cardSubmitBtn.textContent;
-  cardSubmitBtn.textContent = "Saving…";
-  cardSubmitBtn.disabled = true;
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
 
   api.addNewCard({ name, link })
     .then((serverCard) => {
@@ -244,8 +241,9 @@ function handleAddProfileSubmit(evt) {
       // (optional) surface an inline error near the inputs
     })
     .finally(() => {
-      cardSubmitBtn.textContent = prevText;
-      cardSubmitBtn.disabled = false;
+      setButtonText(submitBtn, false); // reset button text
+      resetValidation(addProfileForm, settings); // reset validation state
+      
     });
 }
 
@@ -266,6 +264,10 @@ function handleAddProfileSubmit(evt) {
 // Avatar submission handler 
 function handleAvatarSubmit(evt) {
   evt.preventDefault(); 
+
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
+  
   api
     .editAvatarInfo({
       avatar: avatarInput.value,
@@ -277,12 +279,23 @@ function handleAvatarSubmit(evt) {
     })
     .catch((err) => {
       console.error("Failed to update avatar:", err);
+    })
+    .finally(() => {
+      setButtonText(submitBtn, false);
+      avatarInput.value = ""; // clear the input field
+      // Optionally reset validation state if you have validation set up
+      resetValidation(avatarForm, settings);
+      // avatarInputError.textContent = ""; // clear any previous error
+      // avatarInput.classList.remove("modal__input_type_error");
     });
 }
 
 // function delete submission handler
 function handleDeleteSubmit(evt) {
   evt.preventDefault(); // Prevent default form submission
+  const submitBtn = evt.submitter; 
+  setButtonText(submitBtn, true, "Delete", "Deleting…");
+  
   if (selectedCard && selectedCardId) {
     api.deleteCard(selectedCardId)
       .then((res) => {
@@ -297,6 +310,11 @@ function handleDeleteSubmit(evt) {
       .catch((err) => {
         console.error("Failed to delete card:", err);
         closeModal(deleteModal); // Close the modal even if deletion fails
+      })
+      .finally(() => {
+        setButtonText(submitBtn, false, "Delete", "Deleting..."); // Reset button text
+        deleteForm.reset(); // Reset the form
+        resetValidation(deleteForm, settings); // Reset validation state
       });
   }
 }
