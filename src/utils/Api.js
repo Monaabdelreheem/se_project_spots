@@ -7,11 +7,15 @@ class Api {
     this._headers = headers;   
   }
 
+    _checkResponse(res) {
+    return checkResponse(res);
+  }
+
   _request(path, options = {}) {
     return fetch(`${this._baseUrl}${path}`, {
       headers: this._headers,
       ...options,
-    }).then(checkResponse);
+    }).then(this._checkResponse);
   }
 
   getAppInfo() {

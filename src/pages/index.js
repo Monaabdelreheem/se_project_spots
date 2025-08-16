@@ -171,8 +171,8 @@ function toggleLike(likeBtnEl, cardId) {
 
   api.handleLike(cardId, isActive)
     .then((updatedCard) => {
-      const { isLiked } = addIsLiked(updatedCard, currentUserId); // ← use helper
-      likeBtnEl.classList.toggle("card__like-btn_active", isLiked);
+      // server returns the new state as a boolean
+    likeBtnEl.classList.toggle("card__like-btn_active", !!updatedCard.isLiked);
     })
     .catch((err) => console.error("Failed to toggle like:", err))
     .finally(() => {
