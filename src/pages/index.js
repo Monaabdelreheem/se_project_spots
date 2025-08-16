@@ -6,13 +6,13 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 import logo from "../images/logo.svg";
-import avatarImage from "../images/spots-avatar-and-card-images/Avatar.png";
+// import avatarImage from "../images/spots-avatar-and-card-images/Avatar.png";
 import plusIcon from "../images/plus-icon.svg";
 import pencilIcon from "../images/pencil.svg";
 import pencilAvatar from "../images/spots-avatar-and-card-images/pencil-avatar.png";
 import Api from "../utils/Api.js";
 // import { set } from "core-js/core/dict";
-import { setButtonText } from "../utils/helpers.js";
+import { setButtonText, addIsLiked } from "../utils/helpers.js";
 
 
 // GLOBAL VARIABLE 
@@ -171,17 +171,15 @@ function toggleLike(likeBtnEl, cardId) {
 
   api.handleLike(cardId, isActive)
     .then((updatedCard) => {
-      if (updatedCard.isLiked) {
-        likeBtnEl.classList.add("card__like-btn_active");
-      } else {
-        likeBtnEl.classList.remove("card__like-btn_active");
-      }
+      const { isLiked } = addIsLiked(updatedCard, currentUserId); // ← use helper
+      likeBtnEl.classList.toggle("card__like-btn_active", isLiked);
     })
     .catch((err) => console.error("Failed to toggle like:", err))
     .finally(() => {
       likeBtnEl.disabled = false;
     });
 }
+
 
 // DELETE CARD FLOW (OPEN, CONFIRM, CANCEL)
 function handleDeleteCard(cardElement, cardId) {
@@ -384,7 +382,9 @@ api
     // Render cards from the server 
     cardsList.innerHTML = ""; // clear, then render 
     cards.forEach((item) => {
-      const cardElement = getCardElement(item);
+      // const cardElement = getCardElement(item);
+      const cardWithLikeInfo = addIsLiked(item, currentUserId); // helper in use
+      const cardElement = getCardElement(cardWithLikeInfo);
       cardsList.append(cardElement);
     });
   })
