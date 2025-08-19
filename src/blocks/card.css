@@ -20,7 +20,10 @@
   cursor: pointer;
 }
 .card__delete-btn {
-  background-image: url(../images/Delete\ Icon.svg);
+  background-image: url(../images/DeleteIcon.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 32px;
   height: 32px;
   position: absolute;
@@ -28,11 +31,12 @@
   right: 10px;
   border: none;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0);
 }
+
 .card__delete-btn:hover {
   background-image: url(../images/State=Hover-delete.svg);
   cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 .card__title {
   margin: 0;

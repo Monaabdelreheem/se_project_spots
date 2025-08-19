@@ -1,0 +1,69 @@
+// utils/Api.js
+import { checkResponse } from "./helpers.js";
+
+class Api {
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;   
+    this._headers = headers;   
+  }
+
+    _checkResponse(res) {
+    return checkResponse(res);
+  }
+
+  _request(path, options = {}) {
+    return fetch(`${this._baseUrl}${path}`, {
+      headers: this._headers,
+      ...options,
+    }).then(this._checkResponse);
+  }
+
+  getAppInfo() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
+
+  getInitialCards() {
+    return this._request("/cards");
+  }
+
+  getUserInfo() {
+    return this._request("/users/me");
+  }
+
+  addNewCard({ name, link }) {
+    return this._request("/cards", {
+      method: "POST",
+      body: JSON.stringify({ name, link }),
+    });
+  }
+
+  deleteCard(cardId) {
+    return this._request(`/cards/${cardId}`, { method: "DELETE" });
+  }
+
+  handleLike(cardId, isLiked) {
+    return this._request(`/cards/${cardId}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
+    });
+  }
+
+  editUserInfo({ name, about }) {
+    return this._request("/users/me", {
+      method: "PATCH",
+      body: JSON.stringify({ name, about }),
+    });
+  }
+
+  editAvatarInfo({ avatar }) {
+    return this._request("/users/me/avatar", {
+      method: "PATCH",
+      body: JSON.stringify({ avatar }),
+    });
+  }
+}
+
+export default Api;
+
+
+
+
